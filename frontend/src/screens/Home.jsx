@@ -1,11 +1,22 @@
+import { useEffect, useState } from "react";
 import { Row, Col } from "react-bootstrap";
-import products from "../products";
 import Product from "../componentes/Product";
+import axios from "axios";
 
 // criando tela de home com funcoes do produto:
 // tambem passo descricoes da construcao dessa home usando o bootstrap
 
 const Home = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const { data } = await axios.get("/api/products");
+      setProducts(data);
+    };
+
+    fetchProducts();
+  }, []);
   return (
     <>
       <h1>Produtos disponiveis</h1>
