@@ -1,8 +1,12 @@
 import dotenv from "dotenv";
 import express from "express";
 dotenv.config();
-import products from "./data/products.js";
+import connectDB from "./config/db.js";
+import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
+import productRoutes from "./routes/productsRoutes.js";
 const port = process.env.PORT || 5000;
+
+connectDB(); //conectando ao mongoDB
 
 const app = express();
 
@@ -11,16 +15,10 @@ app.get("/", (req, res) => {
   res.send("Aplicação rodando...");
 });
 
-// obtendo produtos salvos:
-app.get("/api/products", (req, res) => {
-  res.json(products);
-});
+app.use("/api/products", productRoutes);
 
-// obtendo produto especifico atraves de id:
-app.get("/api/products/:id", (req, res) => {
-  const product = products.find((p) => p._id === req.params.id);
-  res.json(product);
-});
+app.use(notFound);
+app.use(errorHandler);
 
 // mensagem no terminal para saber se esta rodando normal e qual a porta certa
 app.listen(port, () => console.log(`Servidor rodando na porta ${port}`));

@@ -2,7 +2,6 @@
 
 const products = [
   {
-    _id: "1",
     name: "AirPods com estojo de recarga (2a geração)",
     image: "/images/airpods.jpg",
     description:
@@ -15,7 +14,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: "2",
     name: "Caixa de chocolate Garoto 250g",
     image: "/images/CaixaDeChocolateGaroto(Ajustado).jpeg",
     description:
@@ -28,7 +26,6 @@ const products = [
     numReviews: 8,
   },
   {
-    _id: "3",
     name: "Engradado com cerveja artesanal com 6 unidades",
     image: "/images/GradeDeCervejaArtesanal(Ajustado).jpeg",
     description:
@@ -41,7 +38,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: "4",
     name: "Brinquedo LEGO Batman com mais de 1000 peças",
     image: "/images/BrinquedoLEGO(Ajustado).jpeg",
     description:
@@ -54,7 +50,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: "5",
     name: "Kit de agendas Golden Coil - 3 Agendas por Kit",
     image: "/images/KitDeAgendas(Ajustado).jpeg",
     description:
@@ -67,7 +62,6 @@ const products = [
     numReviews: 10,
   },
   {
-    _id: "6",
     name: "Caixa de Sabão OMO 1Kg - Removedor de manchas",
     image: "/images/CaixaDeSabaoOMO(Ajustado).jpeg",
     description:
