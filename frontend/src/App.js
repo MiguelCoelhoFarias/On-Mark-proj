@@ -2,6 +2,8 @@ import { Container } from "react-bootstrap";
 import { Outlet } from "react-router-dom";
 import Header from "./componentes/Header";
 import Footer from "./componentes/Footer";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // importando o bootstrap de icones no meu header
 
@@ -16,6 +18,7 @@ const App = () => {
         </Container>
       </main>
       <Footer />
+      <ToastContainer />
     </>
   );
 };
