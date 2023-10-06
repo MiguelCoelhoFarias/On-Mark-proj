@@ -8,7 +8,9 @@ import { toast } from "react-toastify";
 import {
   useUpdateProductMutation,
   useGetProductDetailsQuery,
+  useUploadProductImageMutation,
 } from "../../slices/productsApiSlice";
+import { set } from "mongoose";
 
 const ProductEditor = () => {
   const { id: productId } = useParams();
@@ -29,6 +31,9 @@ const ProductEditor = () => {
 
   const [updateProduct, { isLoading: loadingUpdate }] =
     useUpdateProductMutation();
+
+  const [uploadProductImage, { isLoading: loadingupload }] =
+    useUploadProductImageMutation();
 
   const navigate = useNavigate();
 
@@ -62,6 +67,18 @@ const ProductEditor = () => {
     } else {
       toast.success("Produto atualizado");
       navigate("/admin/productlist");
+    }
+  };
+
+  const uploadFileHandler = async (e) => {
+    const formData = new FormData();
+    formData.append("image", e.target.files[0]);
+    try {
+      const res = await uploadProductImage(formData).unwrap();
+      toast.success(res.message);
+      setImage(res.image);
+    } catch (err) {
+      toast.error(err?.data?.message || err.error);
     }
   };
 
@@ -100,7 +117,20 @@ const ProductEditor = () => {
               ></Form.Control>
             </Form.Group>
 
-            {/* IMAGE GROUP */}
+            <Form.Group controlId="image" className="my-2">
+              <Form.Label>Imagem</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Adicione a URL da imagem"
+                value={image}
+                onChange={(e) => setImage}
+              ></Form.Control>
+              <Form.Control
+                type="file"
+                Label="Escolha um arquivo"
+                onChange={uploadFileHandler}
+              ></Form.Control>
+            </Form.Group>
 
             <Form.Group controlId="brand" className="my-2">
               <Form.Label>Marca</Form.Label>
