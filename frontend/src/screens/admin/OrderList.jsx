@@ -20,11 +20,11 @@ const OrderList = () => {
           <thead>
             <tr>
               <th>ID</th>
+              <th>USUARIO</th>
               <th>DATA</th>
               <th>TOTAL</th>
               <th>PAGO</th>
               <th>ENTREGUE</th>
-              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -35,8 +35,15 @@ const OrderList = () => {
                 <td>{order.createdAt.substring(0, 10)}</td>
                 <td>{order.totalPrice}</td>
                 <td>
-                  {order.isDelivered ? (
+                  {order.isPaid ? (
                     order.paidAt.substring(0, 10)
+                  ) : (
+                    <FaTimes style={{ color: "red" }} />
+                  )}
+                </td>
+                <td>
+                  {order.isDelivered ? (
+                    order.deliveredAt.substring(0, 10)
                   ) : (
                     <FaTimes style={{ color: "red" }} />
                   )}
