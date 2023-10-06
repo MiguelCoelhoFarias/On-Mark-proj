@@ -37,7 +37,7 @@ const Header = () => {
         variant="dark"
         expand="lg"
         collapseOnSelect
-        style={{ backgroundColor: "#54065C" }}
+        style={{ backgroundColor: "#333333" }}
       >
         <Container>
           <LinkContainer to="/">
