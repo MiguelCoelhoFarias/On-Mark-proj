@@ -15,6 +15,7 @@ import "./assets/styles/index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import PrivateRoute from "./componentes/PrivateRoute";
+import AdminRoute from "./componentes/AdminRoute";
 import Home from "./screens/Home";
 import Product from "./screens/Product";
 import Cart from "./screens/Cart";
@@ -25,6 +26,7 @@ import PaymentScreen from "./screens/PaymentScreen";
 import PlaceOrder from "./screens/PlaceOrder";
 import Order from "./screens/Order";
 import Profile from "./screens/Profile";
+import OrderList from "./screens/admin/OrderList";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -42,6 +44,10 @@ const router = createBrowserRouter(
         {/* mudei isso para minusculo so pra testar */}
         <Route path="/order/:id" element={<Order />} />
         <Route path="/profile" element={<Profile />} />
+      </Route>
+
+      <Route path="" element={<AdminRoute />}>
+        <Route path="/admin/orderList" element={<OrderList />} />
       </Route>
     </Route>
   )
